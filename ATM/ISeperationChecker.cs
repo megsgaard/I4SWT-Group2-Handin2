@@ -1,6 +1,6 @@
 ﻿namespace ATM
 {
-    interface ISeperationChecker
+    public interface ISeperationChecker
     {
         void CheckSeperation();
     }
