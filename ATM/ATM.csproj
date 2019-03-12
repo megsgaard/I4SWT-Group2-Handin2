@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirTrafficController.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ISeperationChecker.cs" />
     <Compile Include="ISeperationHandler.cs" />
     <Compile Include="ITrackReciever.cs" />
     <Compile Include="ITransponderReciever.cs" />
+    <Compile Include="IDataCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeperationChecker.cs" />
     <Compile Include="SeperationFileReader.cs" />
