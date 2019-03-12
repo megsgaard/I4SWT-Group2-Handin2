@@ -22,7 +22,9 @@ namespace ATM
 
       public void CalculateVelocity()
       {
-         throw new NotImplementedException();
+         //sådan kan man få tidsforskellen ud i millisekunder
+         int timeTravelled = NewTrackList[1].DataTime.Subtract(OldTrackList[1].DataTime).Milliseconds;
+
       }
 
       public void CalculateCourse()
@@ -45,9 +47,10 @@ namespace ATM
          }
       }
 
-      public void RecieveTrackEvent(object sender, TrackInfo e)
+      public void RecieveTrackEvent(object sender, List<TrackInfo> e)
       {
-         throw new NotImplementedException();
+         OldTrackList=NewTrackList;
+         NewTrackList = e;
       }
    }
 }
