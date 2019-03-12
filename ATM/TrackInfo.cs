@@ -14,7 +14,7 @@ namespace ATM
        public int Ycoor { get; private set; }
        public int Altitude { get; private set; }
        public DateTime DataTime { get; private set; }
-       public int CompassCource { get; private set; }
-       public int Velocity { get; private set; }
+       public int CompassCourse { get; set; }
+       public int Velocity { get; set; }
     }
 }
