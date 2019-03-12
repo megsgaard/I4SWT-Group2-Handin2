@@ -8,11 +8,11 @@ namespace ATM
 {
     public class AirTrafficController
     {
-        public void InvestigateInfo(ISeperationChecker seperationChecker)
-        {
-            seperationChecker = new SeperationChecker();
-            seperationChecker.CheckSeperation();
-        }
+        //public void InvestigateInfo(ISeperationChecker seperationChecker)
+        //{
+        //    seperationChecker = new SeperationChecker();
+        //    seperationChecker.CheckSeperation();
+        //}
 
         public void Calculate(IDataCalculator dataCalculator)
         {
