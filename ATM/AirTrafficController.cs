@@ -10,16 +10,19 @@ namespace ATM
     {
         public void InvestigateInfo(ISeperationChecker seperationChecker)
         {
-
+            seperationChecker = new SeperationChecker();
+            seperationChecker.CheckSeperation();
         }
 
         public void Calculate(IDataCalculator dataCalculator)
         {
-
+            dataCalculator = new DataCalculator();
+            dataCalculator.DoCalculations();
         }
 
         public void Print(IConditionViewer conditionViewer)
         {
+            conditionViewer = new ConsoleViewer();
 
         }
 

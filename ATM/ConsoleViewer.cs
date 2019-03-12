@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-   public class ConsoleViewer
-   {
-   }
+    public class ConsoleViewer: IConditionViewer
+    {
+        public void PrintCurrentCondition()
+        {
+
+        }
+    }
 }
