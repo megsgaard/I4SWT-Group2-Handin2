@@ -15,6 +15,6 @@ namespace ATM
        public int Altitude { get; set; }
        public DateTime DataTime { get; set; }
        public int CompassCourse { get; set; }
-       public int Velocity { get; set; }
+       public double Velocity { get; set; }
     }
 }

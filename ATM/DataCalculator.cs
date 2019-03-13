@@ -27,21 +27,25 @@ namespace ATM
 
       public void CalculateVelocity()
       {
-         int count = 0;
          foreach (var track in OldTrackList)
          {
-            for (int i = count; i < OldTrackList.Count; i++)
+            for (int i = 0; i < NewTrackList.Count; i++)
             {
                if (track.Tag == NewTrackList[i].Tag)
                {
                   //Calculate velocity
+                  int timeTraveled = NewTrackList[i].DataTime.Subtract(track.DataTime).Milliseconds;
+                  double timeTraveled_sec = (double)timeTraveled / 100;
+                  double deltaY = NewTrackList[i].Ycoor - track.Ycoor;
+                  double deltaX = NewTrackList[i].Xcoor - track.Xcoor;
+                  double distanceTraveled = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+                  NewTrackList[i].Velocity = distanceTraveled / timeTraveled;
+
                }
             }
+
          }
-
-
-         //sådan kan man få tidsforskellen ud i millisekunder
-         int timeTravelled = NewTrackList[1].DataTime.Subtract(OldTrackList[1].DataTime).Milliseconds;
+         
 
          //velocity skal være i meter i sek.
 
@@ -49,14 +53,19 @@ namespace ATM
 
       public void CalculateCourse()
       {
-         int count = 0;
          foreach (var track in OldTrackList)
          {
-            for (int i = count; i < OldTrackList.Count; i++)
+            for (int i = 0; i < NewTrackList.Count; i++)
             {
                if (track.Tag == NewTrackList[i].Tag)
                {
-                  //Calculate velocity
+                  //Calculate course
+                  double deltaY = NewTrackList[i].Ycoor - track.Ycoor;
+                  double deltaX = NewTrackList[i].Xcoor - track.Xcoor;
+                  double theta_rad = Math.Atan(deltaY / deltaX);
+                  double theta_degrees = theta_rad * 180 / Math.PI;
+
+                  NewTrackList[i].CompassCourse = (90 - (int)theta_degrees);
                }
             }
          }
