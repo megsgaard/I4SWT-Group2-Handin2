@@ -43,12 +43,7 @@ namespace ATM
 
                }
             }
-
          }
-         
-
-         //velocity skal være i meter i sek.
-
       }
 
       public void CalculateCourse()
@@ -65,7 +60,14 @@ namespace ATM
                   double theta_rad = Math.Atan(deltaY / deltaX);
                   double theta_degrees = theta_rad * 180 / Math.PI;
 
-                  NewTrackList[i].CompassCourse = (90 - (int)theta_degrees);
+                  if (deltaY < 0)
+                  {
+                     NewTrackList[i].CompassCourse = (180 - (int)theta_degrees);
+                  }
+                  else
+                  {
+                     NewTrackList[i].CompassCourse = (90 - (int)theta_degrees);
+                  }
                }
             }
          }
@@ -75,7 +77,7 @@ namespace ATM
       {
          OldTrackList=NewTrackList;
          NewTrackList = e.TrackInfos; //den nye liste skal sættes lig med den liste der er sendt over med eventet. 
-         //DoCalculations();
+         DoCalculations();
          TrackCalcDoneEvent(new TracksEventArgs {TrackInfos = NewTrackList}); //kalde metoden som raiser det nye event der skal sendes afsted. 
       }
 
