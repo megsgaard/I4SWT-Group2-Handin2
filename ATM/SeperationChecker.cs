@@ -1,9 +1,12 @@
-﻿namespace ATM
+﻿using System.Collections.Generic;
+
+namespace ATM
 {
     public class SeperationChecker : ISeperationChecker
     {
-        public void CheckSeperation()
+        public void CheckSeperation(List<TrackInfo> trackInfoList)
         {
+            
         }
     }
 }
