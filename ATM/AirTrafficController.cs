@@ -22,7 +22,7 @@ namespace ATM
 
         public void Print(IConditionViewer conditionViewer)
         {
-            conditionViewer.PrintCurrentCondition();
+            conditionViewer.PrintCurrentCondition(TrackList);
 
         }
 

@@ -8,12 +8,11 @@ namespace ATM
 {
     public class ConsoleViewer: IConditionViewer
     {
-        private List<TrackInfo> TrackList;
         public string TrackMessage { get; set; }
 
         //public event EventHandler<List<TrackInfo>> RecievedEvent;
 
-        public void PrintCurrentCondition()
+        public void PrintCurrentCondition(List<TrackInfo> TrackList)
         {
             foreach (var track in TrackList)
             {
