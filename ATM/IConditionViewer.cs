@@ -8,6 +8,7 @@ namespace ATM
 {
    public interface IConditionViewer
    {
+       //event EventHandler<List<TrackInfo>> RecievedEvent; 
        void PrintCurrentCondition();
    }
 }
