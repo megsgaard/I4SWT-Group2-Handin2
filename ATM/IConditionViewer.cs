@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-   class IConditionViewer
+   public interface IConditionViewer
    {
+       void PrintCurrentCondition();
    }
 }

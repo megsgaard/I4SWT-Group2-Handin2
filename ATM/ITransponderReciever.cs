@@ -2,7 +2,7 @@
 
 namespace ATM
 {
-    interface ITransponderReciever
+    public interface ITransponderReciever
     {
         event EventHandler<ITrackReciever> NewTransponderRecieverEvent;
 
