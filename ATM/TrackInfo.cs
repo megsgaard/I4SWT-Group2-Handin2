@@ -9,11 +9,11 @@ namespace ATM
 {
    public class TrackInfo
    {
-       public string Tag { get; private set; }
-       public int Xcoor { get; private set; }
-       public int Ycoor { get; private set; }
-       public int Altitude { get; private set; }
-       public DateTime DataTime { get; private set; }
+       public string Tag { get; set; }
+       public int Xcoor { get; set; }
+       public int Ycoor { get; set; }
+       public int Altitude { get; set; }
+       public DateTime DataTime { get; set; }
        public int CompassCourse { get; set; }
        public int Velocity { get; set; }
     }
