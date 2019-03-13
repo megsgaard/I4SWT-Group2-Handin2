@@ -25,11 +25,22 @@ namespace ATM.Test.Unit
       //[Test]
       //public void RecieveTrackEvent_EventFired_NewTrackListIsUpdated()
       //{
-      //   TrackInfo _track1 = new TrackInfo();
+      //   TrackInfo _track1 = new TrackInfo()
       //   {
+      //      Tag = "FHJ"
+      //   };
+      //   TrackInfo _track2 = new TrackInfo()
+      //   {
+      //      Tag = "NBD"
+      //   };
+      //   TrackInfo _track3 = new TrackInfo()
+      //   {
+      //      Tag = "ME"
+      //   };
 
-      //   }
-      //   _trackReciever.TracksInASEvent+=Raise.EventWith(new List<TrackInfo>())
+      //   List < TrackInfo > trackList = new List<TrackInfo>();
+      //   trackList.Add(_track1);
+      //   _trackReciever.TracksInASEvent += Raise.EventWith(trackList);
       //}
    }
 }
