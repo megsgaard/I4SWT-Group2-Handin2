@@ -12,7 +12,7 @@ namespace ATM
 
         public void InvestigateInfo(ISeperationChecker seperationChecker)
         {
-            seperationChecker.CheckSeperation();
+            seperationChecker.CheckSeperation(TrackList);
         }
 
         public void Calculate(IDataCalculator dataCalculator)

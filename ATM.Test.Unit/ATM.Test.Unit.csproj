@@ -56,7 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirTrafficControllerTest.cs" />
+    <Compile Include="AirTrafficControllerUnitTest.cs" />
+    <Compile Include="ConsoleViewerUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeperationCheckerUnitTests.cs" />
   </ItemGroup>

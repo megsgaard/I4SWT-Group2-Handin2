@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace ATM.Test.Unit
 {
     [TestFixture]
-    public class AirTrafficControllerTest
+    public class AirTrafficControllerUnitTest
     {
         private AirTrafficController _uut;
         private IDataCalculator _dataCalculator;
