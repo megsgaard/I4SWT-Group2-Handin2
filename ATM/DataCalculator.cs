@@ -12,11 +12,13 @@ namespace ATM
       public List<TrackInfo> OldTrackList { get; private set; }
       private List<TrackInfo> TracksInBothLists;
 
-      public event EventHandler<List<TrackInfo>> CalculateEvent;
+      public event EventHandler<TracksEventArgs> CalculateEvent;
 
       public DataCalculator(ITrackReciever trackReciever)
       {
          trackReciever.TracksInASEvent += RecieveTrackEvent;
+         OldTrackList = new List<TrackInfo>();
+         NewTrackList = new List<TrackInfo>();
       }
       public void DoCalculations()
       {
@@ -67,12 +69,17 @@ namespace ATM
          }
       }
 
-      public void RecieveTrackEvent(object sender, List<TrackInfo> e)
+      public void RecieveTrackEvent(object sender, TracksEventArgs e)
       {
          OldTrackList=NewTrackList;
-         NewTrackList = e;
-         DoCalculations();
-         CalculateEvent?.Invoke(this,NewTrackList);
+         NewTrackList = e.TrackInfos;
+         //DoCalculations();
+         TrackCalcDoneEvent(new TracksEventArgs {TrackInfos = NewTrackList});
+      }
+
+      protected virtual void TrackCalcDoneEvent(TracksEventArgs e)
+      {
+         CalculateEvent?.Invoke(this,e);
       }
    }
 }

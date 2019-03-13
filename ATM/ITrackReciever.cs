@@ -5,6 +5,6 @@ namespace ATM
 {
     public interface ITrackReciever
     {
-       event EventHandler<List<TrackInfo>> TracksInASEvent;
+       event EventHandler<TracksEventArgs> TracksInASEvent;
     }
 }
