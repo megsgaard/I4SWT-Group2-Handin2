@@ -8,22 +8,16 @@ namespace ATM
 {
     public class ConsoleViewer: IConditionViewer
     {
-        private List<TrackInfo> TrackList;
+        public string TrackMessage { get; set; }
 
         //public event EventHandler<List<TrackInfo>> RecievedEvent;
 
-        public void PrintCurrentCondition()
+        public void PrintCurrentCondition(List<TrackInfo> TrackList)
         {
             foreach (var track in TrackList)
             {
-                Console.WriteLine("New aircraft comming in!");
-                Console.WriteLine("Tag: " + track.Tag);
-                Console.WriteLine("Altitude: " + track.Altitude);
-                Console.WriteLine("Time: " + track.DataTime);
-                Console.WriteLine("Compass Course: " + track.CompassCourse);
-                Console.WriteLine("Velocity: " + track.Velocity);
-                Console.WriteLine("X-coor: " + track.Xcoor);
-                Console.WriteLine("Y-coor: " + track.Ycoor);
+                TrackMessage = ("New aircraft comming in!\nTag: " + track.Tag+ "\nAltitude: " + track.Altitude+ "\nTime: " + track.DataTime+ "\nCompass Course: "+track.CompassCourse + "\nVelocity: " + track.Velocity + "\nX-coor: " + track.Xcoor + "\nY-coor: " +track.Ycoor);
+                Console.WriteLine(TrackMessage);
             }
         }
     }

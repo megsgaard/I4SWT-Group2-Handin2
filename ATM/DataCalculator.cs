@@ -8,11 +8,18 @@ namespace ATM
 {
    public class DataCalculator:IDataCalculator
    {
-      private List<TrackInfo> NewTrackList;
-      private List<TrackInfo> OldTrackList;
+      public List<TrackInfo> NewTrackList { get; private set; }
+      public List<TrackInfo> OldTrackList { get; private set; }
       private List<TrackInfo> TracksInBothLists;
 
-      public event EventHandler<List<TrackInfo>> CalculateEvent;
+      public event EventHandler<TracksEventArgs> CalculateEvent;
+
+      public DataCalculator(ITrackReciever trackReciever)
+      {
+         trackReciever.TracksInASEvent += RecieveTrackEvent;
+         OldTrackList = new List<TrackInfo>();
+         NewTrackList = new List<TrackInfo>();
+      }
       public void DoCalculations()
       {
          CompareLists();
@@ -22,8 +29,23 @@ namespace ATM
 
       public void CalculateVelocity()
       {
+         int count = 0;
+         foreach (var track in OldTrackList)
+         {
+            for (int i = count; i < OldTrackList.Count; i++)
+            {
+               if (track.Tag == NewTrackList[i].Tag)
+               {
+                  //Calculate velocity
+               }
+            }
+         }
+
+
          //sådan kan man få tidsforskellen ud i millisekunder
          int timeTravelled = NewTrackList[1].DataTime.Subtract(OldTrackList[1].DataTime).Milliseconds;
+
+         //velocity skal være i meter i sek.
 
       }
 
@@ -47,10 +69,17 @@ namespace ATM
          }
       }
 
-      public void RecieveTrackEvent(object sender, List<TrackInfo> e)
+      public void RecieveTrackEvent(object sender, TracksEventArgs e)
       {
          OldTrackList=NewTrackList;
-         NewTrackList = e;
+         NewTrackList = e.TrackInfos;
+         //DoCalculations();
+         TrackCalcDoneEvent(new TracksEventArgs {TrackInfos = NewTrackList});
+      }
+
+      protected virtual void TrackCalcDoneEvent(TracksEventArgs e)
+      {
+         CalculateEvent?.Invoke(this,e);
       }
    }
 }

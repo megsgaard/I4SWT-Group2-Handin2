@@ -10,12 +10,14 @@ using NUnit.Framework;
 namespace ATM.Test.Unit
 {
     [TestFixture]
-    public class AirTrafficControllerTest
+    public class AirTrafficControllerUnitTest
     {
         private AirTrafficController _uut;
         private IDataCalculator _dataCalculator;
         private IConditionViewer _conditionViewer;
         private ISeperationChecker _seperationChecker;
+        private TrackInfo _info;
+        private List<TrackInfo> _list;
 
         [SetUp]
         public void SetUp()
@@ -23,7 +25,7 @@ namespace ATM.Test.Unit
             _dataCalculator = Substitute.For<IDataCalculator>();
             _conditionViewer = Substitute.For<IConditionViewer>();
             _seperationChecker = Substitute.For<ISeperationChecker>();
-      
+            _info = Substitute.For<TrackInfo>();
 
             _uut = new AirTrafficController();
         }
@@ -39,14 +41,14 @@ namespace ATM.Test.Unit
         public void Print_CallingMethod_PrintCurrentConditionWasCalled()
         {
             _uut.Print(_conditionViewer);
-            _conditionViewer.Received(1).PrintCurrentCondition();
+            _conditionViewer.Received(1).PrintCurrentCondition(_list);
         }
 
         [Test]
         public void InvestigateInfo_CallingMethod_CheckSeperationWasCalled()
         {
             _uut.Print(_conditionViewer);
-            _conditionViewer.Received(1).PrintCurrentCondition();
+            _conditionViewer.Received(1).PrintCurrentCondition(_list);
         }
 
 

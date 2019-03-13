@@ -9,12 +9,12 @@ namespace ATM
 {
     public interface IDataCalculator
     {
-       event EventHandler<List<TrackInfo>> CalculateEvent;
+       event EventHandler<TracksEventArgs> CalculateEvent;
 
        void DoCalculations();
        void CalculateVelocity();
        void CalculateCourse();
        void CompareLists();
-       void RecieveTrackEvent(object sender, List<TrackInfo> e);
+       void RecieveTrackEvent(object sender, TracksEventArgs e);
     }
 }
