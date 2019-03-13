@@ -14,7 +14,6 @@ namespace ATM
        void DoCalculations();
        void CalculateVelocity();
        void CalculateCourse();
-       void CompareLists();
        void RecieveTrackEvent(object sender, TracksEventArgs e);
     }
 }

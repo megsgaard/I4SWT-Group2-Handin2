@@ -10,19 +10,17 @@ namespace ATM
    {
       public List<TrackInfo> NewTrackList { get; private set; }
       public List<TrackInfo> OldTrackList { get; private set; }
-      private List<TrackInfo> TracksInBothLists;
 
-      public event EventHandler<TracksEventArgs> CalculateEvent;
+      public event EventHandler<TracksEventArgs> CalculateEvent; //oprette det event der skal sendes videre. 
 
-      public DataCalculator(ITrackReciever trackReciever)
+      public DataCalculator(ITrackReciever trackReciever) //i parentesen skrives det interface hvor man modtager event fra.
       {
-         trackReciever.TracksInASEvent += RecieveTrackEvent;
+         trackReciever.TracksInASEvent += RecieveTrackEvent; //første del er fra parentesen ovenfor, efter += skrives den metode i denne klasse, som kaldes, når eventet sker. 
          OldTrackList = new List<TrackInfo>();
          NewTrackList = new List<TrackInfo>();
       }
       public void DoCalculations()
       {
-         CompareLists();
          CalculateCourse();
          CalculateVelocity();
       }
@@ -51,30 +49,25 @@ namespace ATM
 
       public void CalculateCourse()
       {
-         throw new NotImplementedException();
-      }
-
-      public void CompareLists()
-      {
          int count = 0;
          foreach (var track in OldTrackList)
          {
             for (int i = count; i < OldTrackList.Count; i++)
             {
-               if (track.Tag==NewTrackList[i].Tag)
+               if (track.Tag == NewTrackList[i].Tag)
                {
-                  TracksInBothLists.Add(NewTrackList[i]);
+                  //Calculate velocity
                }
             }
          }
       }
 
-      public void RecieveTrackEvent(object sender, TracksEventArgs e)
+      public void RecieveTrackEvent(object sender, TracksEventArgs e) //Når metoden kaldes fås et objekt e af typen TracksEventArgs
       {
          OldTrackList=NewTrackList;
-         NewTrackList = e.TrackInfos;
+         NewTrackList = e.TrackInfos; //den nye liste skal sættes lig med den liste der er sendt over med eventet. 
          //DoCalculations();
-         TrackCalcDoneEvent(new TracksEventArgs {TrackInfos = NewTrackList});
+         TrackCalcDoneEvent(new TracksEventArgs {TrackInfos = NewTrackList}); //kalde metoden som raiser det nye event der skal sendes afsted. 
       }
 
       protected virtual void TrackCalcDoneEvent(TracksEventArgs e)
