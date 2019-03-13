@@ -12,12 +12,7 @@ namespace ATM
 
         public void InvestigateInfo(ISeperationChecker seperationChecker)
         {
-            seperationChecker.CheckSeperation(TrackList);
-        }
-
-        public void Calculate(IDataCalculator dataCalculator)
-        {
-            dataCalculator.DoCalculations();
+            seperationChecker.CheckSeperation(TrackList); //tracklist skal fås ind med event
         }
 
         public void Print(IConditionViewer conditionViewer)
@@ -29,6 +24,7 @@ namespace ATM
         public void RecieveCalculatedEvent(object sender, List<TrackInfo> e)
         {
             TrackList = e;
+            //kalde seperation og print 
         }
 
     }

@@ -13,7 +13,6 @@ namespace ATM.Test.Unit
     public class AirTrafficControllerUnitTest
     {
         private AirTrafficController _uut;
-        private IDataCalculator _dataCalculator;
         private IConditionViewer _conditionViewer;
         private ISeperationChecker _seperationChecker;
         private TrackInfo _info;
@@ -22,7 +21,6 @@ namespace ATM.Test.Unit
         [SetUp]
         public void SetUp()
         {
-            _dataCalculator = Substitute.For<IDataCalculator>();
             _conditionViewer = Substitute.For<IConditionViewer>();
             _seperationChecker = Substitute.For<ISeperationChecker>();
             _info = Substitute.For<TrackInfo>();
@@ -30,12 +28,6 @@ namespace ATM.Test.Unit
             _uut = new AirTrafficController();
         }
 
-        [Test]
-        public void Calculate_CallingMethod_DoCalculationsWasCalled()
-        {
-            _uut.Calculate(_dataCalculator);
-            _dataCalculator.Received(1).DoCalculations();
-        }
 
         [Test]
         public void Print_CallingMethod_PrintCurrentConditionWasCalled()
