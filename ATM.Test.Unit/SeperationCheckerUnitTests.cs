@@ -46,7 +46,5 @@ namespace ATM.Test.Unit
 
             Assert.That(_uut.SeperationMessage, Is.Null);
         }
-
-
     }
 }
