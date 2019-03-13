@@ -25,7 +25,7 @@ namespace ATM.Test.Unit
         [Test]
         public void PrintCurrentCondition_DataAvailable_MessageNotNull()
         {
-            var data = new TrackInfo() { Altitude = 10,CompassCourse = 5,DataTime = '10'}
+            //var data = new TrackInfo() { Altitude = 10,CompassCourse = 5,DataTime = null,Tag = }
         }
 
     }
