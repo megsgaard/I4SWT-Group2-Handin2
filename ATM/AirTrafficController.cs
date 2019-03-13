@@ -8,27 +8,27 @@ namespace ATM
 {
     public class AirTrafficController
     {
-        //public void InvestigateInfo(ISeperationChecker seperationChecker)
-        //{
-        //    seperationChecker = new SeperationChecker();
-        //    seperationChecker.CheckSeperation();
-        //}
+        private List<TrackInfo> TrackList;
+
+        public void InvestigateInfo(ISeperationChecker seperationChecker)
+        {
+            seperationChecker.CheckSeperation();
+        }
 
         public void Calculate(IDataCalculator dataCalculator)
         {
-            dataCalculator = new DataCalculator();
             dataCalculator.DoCalculations();
         }
 
         public void Print(IConditionViewer conditionViewer)
         {
-            conditionViewer = new ConsoleViewer();
+            conditionViewer.PrintCurrentCondition();
 
         }
 
-        public void RecieveCalculatedEvent()
+        public void RecieveCalculatedEvent(object sender, List<TrackInfo> e)
         {
-
+            TrackList = e;
         }
 
     }
