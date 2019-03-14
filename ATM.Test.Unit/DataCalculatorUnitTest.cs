@@ -25,14 +25,30 @@ namespace ATM.Test.Unit
       [Test]
       public void RecieveTrackEvent_EventFired_NewTrackListIsUpdated()
       {
-         TrackInfo _track1 = new TrackInfo()
-         {
-            Tag = "FHJ"
-         };
          List<TrackInfo> trackList = new List<TrackInfo>();
-         trackList.Add(_track1);
+         trackList.Add(new TrackInfo() { Tag="FHJ"});
          _trackReciever.TracksInASEvent += Raise.EventWith(new TracksEventArgs {TrackInfos = trackList});
          Assert.That(uut.NewTrackList,Is.EqualTo(trackList));
+      }
+
+      [TestCase(1000,1000,3000,3000,45)]
+      [TestCase(3,1,1,3,135)]
+      [TestCase(3,3,1,1,225)]
+      [TestCase(1,3,3,1,315)]
+      [TestCase(1,1,1,3,0)]
+      [TestCase(1,3,1,1,180)] 
+      [TestCase(1,1,3,1,90)]
+      [TestCase(3,1,1,1,270)] 
+      public void CalculateCourse_FirstPointCoorIsX1AndY1SecondPointCoorIsX2AndY2_CourseIsCC(int X1, int Y1, int X2,
+         int Y2, int CC)
+      {
+         List<TrackInfo> trackList = new List<TrackInfo>();
+         trackList.Add(new TrackInfo(){Xcoor = X1,Ycoor = Y1});
+         _trackReciever.TracksInASEvent += Raise.EventWith(new TracksEventArgs { TrackInfos = trackList });
+         List<TrackInfo> track2List = new List<TrackInfo>();
+         track2List.Add(new TrackInfo() { Xcoor = X2, Ycoor = Y2 });
+         _trackReciever.TracksInASEvent += Raise.EventWith(new TracksEventArgs { TrackInfos = track2List });
+         Assert.That(uut.NewTrackList[0].CompassCourse,Is.EqualTo(CC));
       }
    }
 }
