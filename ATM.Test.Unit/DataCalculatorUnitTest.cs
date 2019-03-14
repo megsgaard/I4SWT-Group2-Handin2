@@ -31,12 +31,14 @@ namespace ATM.Test.Unit
          Assert.That(uut.NewTrackList,Is.EqualTo(trackList));
       }
 
-      [TestCase(1,1,3,3,45)]
-      [TestCase(2,2,6,2,90)]
-      [TestCase(10,10,3,3,135)] 
-      [TestCase(5,20,5,16,270)]
-      //[TestCase(2,2,3,1,315)] //fejl
-      //[TestCase(20,20,10,10,225)] //fejl
+      [TestCase(1000,1000,3000,3000,45)]
+      [TestCase(3,1,1,3,135)]
+      [TestCase(3,3,1,1,225)]
+      [TestCase(1,3,3,1,315)]
+      [TestCase(1,1,1,3,0)]
+      [TestCase(1,3,1,1,180)] 
+      [TestCase(1,1,3,1,90)]
+      [TestCase(3,1,1,1,270)] 
       public void CalculateCourse_FirstPointCoorIsX1AndY1SecondPointCoorIsX2AndY2_CourseIsCC(int X1, int Y1, int X2,
          int Y2, int CC)
       {

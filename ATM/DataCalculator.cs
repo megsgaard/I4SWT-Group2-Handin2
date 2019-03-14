@@ -60,9 +60,13 @@ namespace ATM
                   double theta_rad = Math.Atan(deltaY / deltaX);
                   double theta_degrees = theta_rad * 180 / Math.PI;
 
-                  if (deltaY < 0)
+                  if (deltaY < 0 && deltaX>0)
                   {
-                     NewTrackList[i].CompassCourse = (180 - (int)theta_degrees);
+                     NewTrackList[i].CompassCourse = (270 - (int)theta_degrees);
+                  }
+                  else if (deltaY <= 0 && deltaX <= 0)
+                  {
+                     NewTrackList[i].CompassCourse = (270 - Math.Abs((int)theta_degrees));
                   }
                   else
                   {
