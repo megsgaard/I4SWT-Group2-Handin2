@@ -16,6 +16,7 @@ namespace ATM.Test.Unit
         private IConditionViewer _conditionViewer;
         private ISeperationChecker _seperationChecker;
         private TrackInfo _info;
+        private IDataCalculator _dataCalculator;
         private List<TrackInfo> _list;
 
         [SetUp]
@@ -24,25 +25,39 @@ namespace ATM.Test.Unit
             _conditionViewer = Substitute.For<IConditionViewer>();
             _seperationChecker = Substitute.For<ISeperationChecker>();
             _info = Substitute.For<TrackInfo>();
+            _dataCalculator = Substitute.For<IDataCalculator>();
 
-            _uut = new AirTrafficController();
+            _list = new List<TrackInfo>();
+
+            _uut = new AirTrafficController(_dataCalculator);
         }
 
+
+        //[Test]
+        //public void Print_CallingMethod_PrintCurrentConditionWasCalled()
+        //{
+        //    _uut.Print(_conditionViewer);
+        //    _conditionViewer.Received(1).PrintCurrentCondition(_list);
+        //}
+
+        //[Test]
+        //public void InvestigateInfo_CallingMethod_CheckSeperationWasCalled()
+        //{
+        //    _uut.Print(_conditionViewer);
+        //    _conditionViewer.Received(1).PrintCurrentCondition(_list);
+        //}
 
         [Test]
-        public void Print_CallingMethod_PrintCurrentConditionWasCalled()
+        public void RecieveCalculatedEvent_EventFired_TrackListIsUpdated()
         {
-            _uut.Print(_conditionViewer);
-            _conditionViewer.Received(1).PrintCurrentCondition(_list);
-        }
+            TrackInfo _track1 = new TrackInfo();
+            
+            List<TrackInfo> trackList = new List<TrackInfo>();
+            trackList.Add(_track1);
 
-        [Test]
-        public void InvestigateInfo_CallingMethod_CheckSeperationWasCalled()
-        {
-            _uut.Print(_conditionViewer);
-            _conditionViewer.Received(1).PrintCurrentCondition(_list);
+            _dataCalculator.CalculateEvent += Raise.EventWith(new TracksEventArgs {TrackInfos = trackList});
+            Assert.That(_uut.TrackList, Is.EqualTo(trackList));
         }
-
 
     }
 }

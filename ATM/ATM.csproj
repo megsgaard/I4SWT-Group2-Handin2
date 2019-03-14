@@ -58,7 +58,6 @@
     <Compile Include="TrackInfo.cs" />
     <Compile Include="TrackReciever.cs" />
     <Compile Include="TracksEventArgs.cs" />
-    <Compile Include="TransponderReciever.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
