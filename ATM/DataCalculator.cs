@@ -34,7 +34,7 @@ namespace ATM
                if (track.Tag == NewTrackList[i].Tag)
                {
                   //Calculate velocity
-                  int timeTraveled = NewTrackList[i].DataTime.Subtract(track.DataTime).Seconds;
+                  int timeTraveled = NewTrackList[i].DataTime.Subtract(track.DataTime).Seconds; //OBS nu er det kun i sekunder, sørg for også at få min og milisek med. 
                   double timeTraveled_sec = (double)timeTraveled / 100;
                   double deltaY = NewTrackList[i].Ycoor - track.Ycoor;
                   double deltaX = NewTrackList[i].Xcoor - track.Xcoor;
