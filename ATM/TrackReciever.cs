@@ -10,10 +10,12 @@ namespace ATM
     public class TrackReciever : ITrackReciever
     {
         private ITransponderReceiver reciever;
+        public TracksEventArgs trackEventArgs;
         public event EventHandler<TracksEventArgs> TracksInASEvent;
 
         public TrackReciever(ITransponderReceiver reciever)
         {
+            
             this.reciever = reciever;
 
             this.reciever.TransponderDataReady += Reciever_TransponderDataReady;
@@ -22,7 +24,7 @@ namespace ATM
         private void Reciever_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             var trackInfoList = new List<TrackInfo>();
-            var trackEventArgs = new TracksEventArgs();
+            trackEventArgs = new TracksEventArgs();
             foreach (var data in e.TransponderData)
             {
                 var dataList = new List<string>();
