@@ -21,18 +21,16 @@ namespace ATM
             _conditionViewer = new ConsoleViewer();
         }
 
-
         public void InvestigateInfo(ISeperationChecker seperationChecker)
         {
             _seperationChecker = seperationChecker;
-           seperationChecker.CheckSeperation(TrackList); 
+            seperationChecker.CheckSeperation(TrackList);
         }
 
         public void Print(IConditionViewer conditionViewer)
         {
             _conditionViewer = conditionViewer;
             conditionViewer.PrintCurrentCondition(TrackList);
-
         }
 
         public void RecieveCalculatedEvent(object sender, TracksEventArgs e)
@@ -40,13 +38,12 @@ namespace ATM
             TrackList = e.TrackInfos;
             InvestigateInfo(_seperationChecker);
             Print(_conditionViewer);
-            CalcDoneEvent(new TracksEventArgs{TrackInfos = TrackList});
+            CalcDoneEvent(new TracksEventArgs { TrackInfos = TrackList });
         }
 
         protected virtual void CalcDoneEvent(TracksEventArgs e)
         {
-            Event?.Invoke(this,e);
+            Event?.Invoke(this, e);
         }
-
     }
 }

@@ -19,6 +19,8 @@ namespace ATM
                 TrackMessage = ("New aircraft comming in!\nTag: " + track.Tag+ "\nAltitude: " + track.Altitude+ "\nTime: " + track.DataTime+ "\nCompass Course: "+track.CompassCourse + "\nVelocity: " + track.Velocity + "\nX-coor: " + track.Xcoor + "\nY-coor: " +track.Ycoor);
                 Console.WriteLine(TrackMessage);
             }
+
+            Console.WriteLine("--------------------------------------------------\n");
         }
     }
 }
