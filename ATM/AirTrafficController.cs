@@ -17,7 +17,10 @@ namespace ATM
         {
             dataCalculator.CalculateEvent += RecieveCalculatedEvent;
             TrackList = new List<TrackInfo>();
+            _seperationChecker = new SeperationChecker();
+            _conditionViewer = new ConsoleViewer();
         }
+
 
         public void InvestigateInfo(ISeperationChecker seperationChecker)
         {
@@ -35,8 +38,8 @@ namespace ATM
         public void RecieveCalculatedEvent(object sender, TracksEventArgs e)
         {
             TrackList = e.TrackInfos;
-            //InvestigateInfo(_seperationChecker);
-            //Print(_conditionViewer);
+            InvestigateInfo(_seperationChecker);
+            Print(_conditionViewer);
             CalcDoneEvent(new TracksEventArgs{TrackInfos = TrackList});
         }
 

@@ -15,37 +15,47 @@ namespace ATM.Test.Unit
         private AirTrafficController _uut;
         private IConditionViewer _conditionViewer;
         private ISeperationChecker _seperationChecker;
-        private TrackInfo _info;
         private IDataCalculator _dataCalculator;
-        private List<TrackInfo> _list;
 
         [SetUp]
         public void SetUp()
         {
             _conditionViewer = Substitute.For<IConditionViewer>();
             _seperationChecker = Substitute.For<ISeperationChecker>();
-            _info = Substitute.For<TrackInfo>();
             _dataCalculator = Substitute.For<IDataCalculator>();
-
-            _list = new List<TrackInfo>();
 
             _uut = new AirTrafficController(_dataCalculator);
         }
 
 
-        //[Test]
-        //public void Print_CallingMethod_PrintCurrentConditionWasCalled()
-        //{
-        //    _uut.Print(_conditionViewer);
-        //    _conditionViewer.Received(1).PrintCurrentCondition(_list);
-        //}
+        [Test]
+        public void Print_CallingMethod_PrintCurrentConditionWasCalled()
+        {
+            TrackInfo _track1 = new TrackInfo();
 
-        //[Test]
-        //public void InvestigateInfo_CallingMethod_CheckSeperationWasCalled()
-        //{
-        //    _uut.Print(_conditionViewer);
-        //    _conditionViewer.Received(1).PrintCurrentCondition(_list);
-        //}
+            List<TrackInfo> trackList = new List<TrackInfo>();
+            trackList.Add(_track1);
+
+            _dataCalculator.CalculateEvent += Raise.EventWith(new TracksEventArgs { TrackInfos = trackList });
+
+            _uut.Print(_conditionViewer);
+            _conditionViewer.Received(1).PrintCurrentCondition(trackList);
+
+        }
+
+        [Test]
+        public void InvestigateInfo_CallingMethod_CheckSeperationWasCalled()
+        {
+            TrackInfo _track1 = new TrackInfo();
+
+            List<TrackInfo> trackList = new List<TrackInfo>();
+            trackList.Add(_track1);
+
+            _dataCalculator.CalculateEvent += Raise.EventWith(new TracksEventArgs { TrackInfos = trackList });
+
+            _uut.InvestigateInfo(_seperationChecker);
+            _seperationChecker.Received(1).CheckSeperation(trackList);
+        }
 
         [Test]
         public void RecieveCalculatedEvent_EventFired_TrackListIsUpdated()
