@@ -7,7 +7,7 @@ namespace ATM
     {
         public void HandleSeperation(string message)
         {
-            File.AppendAllText("Log\\LogMessage.txt", message);
+            File.AppendAllText("LogMessage.txt", message);
         }
     }
 }
