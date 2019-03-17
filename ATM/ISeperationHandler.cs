@@ -1,7 +1,7 @@
 ﻿namespace ATM
 {
-    interface ISeperationHandler
+    public interface ISeperationHandler
     {
-        void HandleSeperation();
+        void HandleSeperation(string message);
     }
 }

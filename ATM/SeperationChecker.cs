@@ -6,7 +6,13 @@ namespace ATM
     public class SeperationChecker : ISeperationChecker
     {
         private int counter;
+        private ISeperationHandler seperationHandler;
         public string SeperationMessage { get; set; }
+
+        public SeperationChecker()
+        {
+            seperationHandler = new SeperationFileWriter();
+        }
 
         public void CheckSeperation(List<TrackInfo> trackInfoList)
         {
@@ -24,11 +30,17 @@ namespace ATM
                         if (xcoordinateDifference < 5000 || ycoordinateDifference < 5000)
                         {
                             SeperationMessage = $"{item.Tag} and {trackInfoList[i].Tag} are about to crash";
+                            LogSeperation(SeperationMessage);
                         }
                     }
                 }
                 counter++;
             }
+        }
+
+        public void LogSeperation(string message)
+        {
+            seperationHandler.HandleSeperation(message);
         }
     }
 }
