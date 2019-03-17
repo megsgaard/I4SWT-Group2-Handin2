@@ -59,5 +59,8 @@
     <Compile Include="TrackReciever.cs" />
     <Compile Include="TracksEventArgs.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log\LogMessages.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
