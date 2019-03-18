@@ -39,7 +39,7 @@ namespace ATM.Test.Unit
         public void TransponderDataReady_TwoOutOfThreeElementsAreInsideTheSurveilledAirspace_TwoTrackInfoObjectsAreCreated()
         {
             List<string> testTransponderData = new List<string>();
-            testTransponderData.Add("BCD123;80005;55890;12000;20151006213456789"); //outside the surveilled airspace
+            testTransponderData.Add("BCD123;90005;55890;12000;20151006213456789"); //outside the surveilled airspace
             testTransponderData.Add("ATR423;39045;12932;14000;20151006213456789");
             testTransponderData.Add("XYZ987;25059;75654;4000;20151006213456789");
 

@@ -34,7 +34,7 @@ namespace ATM
                 var xcoordinate = Convert.ToInt32(dataList[1]);
                 var ycoordinate = Convert.ToInt32(dataList[2]);
 
-                if (xcoordinate < 80000 && ycoordinate < 80000)
+                if (xcoordinate < 85000 && ycoordinate < 85000)
                 {
                     trackInfo.Xcoor = xcoordinate;
                     trackInfo.Ycoor = ycoordinate;
