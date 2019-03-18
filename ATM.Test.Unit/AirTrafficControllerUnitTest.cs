@@ -25,6 +25,8 @@ namespace ATM.Test.Unit
             _dataCalculator = Substitute.For<IDataCalculator>();
 
             _uut = new AirTrafficController(_dataCalculator);
+
+
         }
 
 
