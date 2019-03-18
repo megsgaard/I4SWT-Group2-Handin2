@@ -18,21 +18,21 @@ namespace ATM.Test.Unit
             _uut = new SeperationFileWriter();
         }
 
-        //[Test]
-        //public void HandleSeperation_TestMessageIsWrittenInLog_LogMessagesContainsTestMessage()
-        //{
-        //    string testMessage = "testMessage";
-        //    string loadedMessage;
+        [Test]
+        public void HandleSeperation_TestMessageIsWrittenInLog_LogMessagesContainsTestMessage()
+        {
+            string testMessage = "testMessage";
+            string loadedMessage;
 
-        //    _uut.HandleSeperation(testMessage);
+            _uut.HandleSeperation(testMessage);
 
-        //    using (var sr = new StreamReader(TestContext.CurrentContext.WorkDirectory + "Log\\LogMessages.txt"))
-        //    {
-        //        loadedMessage = sr.ReadToEnd();
-        //    }
+            using (var sr = new StreamReader("LogMessages.txt"))
+            {
+                loadedMessage = sr.ReadLine();
+            }
 
-        //    Assert.That(loadedMessage, Is.EqualTo(testMessage));
-        //}
+            Assert.That(loadedMessage, Is.EqualTo(testMessage));
+        }
 
     }
 }
