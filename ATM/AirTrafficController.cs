@@ -17,7 +17,7 @@ namespace ATM
         {
             dataCalculator.CalculateEvent += RecieveCalculatedEvent;
             TrackList = new List<TrackInfo>();
-            _seperationChecker = new SeperationChecker();
+            _seperationChecker = new SeperationChecker(); //disse bør ikke oprettes her, men injecteres fra main
             _conditionViewer = new ConsoleViewer();
         }
 
